@@ -1,24 +1,47 @@
 from random import choice
 import json
 #cap_es = {1 :33,2 :27, 3:43, 4:27,5 : 0}
-f = open("es.json","r")
-cap_es= json.load(f)
-f.close()
+with open("es.json","r") as f:
+	diz = json.load(f)
+#print(diz)
+
+#capitolo = "1"
+#print(capitolo)
+
+tipo = choice(["esr","esr","esm"])
+
+with open("done.csv","r") as f:
+	fatti = [s.strip() for s in f.readlines()]
+#print(fatti)
+
+lista_possibilita = []
+while not lista_possibilita:
+	capitolo = choice(list(diz.keys()))
+	#print(capitolo)
+	lista_possibilita = [f"{tipo} {i}" for i in range(1,1+int(diz[capitolo][f"n_{tipo}"])) if f"{capitolo} {tipo} {i}" not in fatti]*5
+	lista_possibilita.extend([f"{tipo} {i}" for i in range(1,1+int(diz[capitolo][f"n_{tipo}"]))])
+	#print(lista_possibilita)
 
 
-working_caps = ["4","5","6"]
-w = open('done.txt','a')
-c = choice(list(cap_es.keys()))
-n = cap_es[c]
-if c in working_caps:
-	n+=1
-if n!=1:
-	n= choice(range(n))+1
-print(f"{c} : {n}")
-print(f"{c} : {n}",file=w)
 
-if n ==cap_es[c]+1 and c in working_caps:
-	cap_es[c] = n
-	f = open("es.json","w")
-	f.write(str(cap_es).replace("'",'"'))
-	f.close()
+
+
+
+#print(lista_possibilita)
+es = choice(lista_possibilita)
+print(f"{capitolo}: {es}")
+
+
+
+with open("done.csv","a") as f:
+	print(f"{capitolo} {es}",file=f)
+n = int(es.split(" ")[1])
+if n==diz[capitolo][f"n_{tipo}"] and  n<diz[capitolo][f"n_{tipo}_max"] :
+	print("Si progredisce verso l'infinito :)")
+	diz[capitolo][f"n_{tipo}"]+=1 
+
+with open("es.json","w") as f:
+	json.dump(diz,f)
+
+
+
