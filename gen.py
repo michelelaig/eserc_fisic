@@ -20,7 +20,7 @@ with open("done.csv","r") as f:
 		fatti_oggi = [s.strip() for s in lst[lst.index(t+'\n')+1::]]
 	else:
 		fatti_oggi = []
-cap_preferiti = ["4"]
+cap_preferiti = ["4","5"]
 lista_possibilita = []
 while not lista_possibilita:
 	cs = list(diz.keys())+cap_preferiti*10
