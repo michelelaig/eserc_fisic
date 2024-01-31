@@ -4,14 +4,8 @@ import json
 import pretty_errors
 
 
-# cap_es = {1 :33,2 :27, 3:43, 4:27,5 : 0}
 with open("es.json", "r") as f:
     diz = json.load(f)
-# print(diz)
-
-# capitolo = "1"
-# print(capitolo)
-
 tipo = choice(["esr", "esr", "esm"])
 
 t = str(datetime.date(datetime.now()))
@@ -31,7 +25,7 @@ with open("done.csv", "r") as f:
     if t + '\n' in lst:
         fatti_oggi = [s.strip() for s in lst[lst.index(t + '\n') + 1::]]
 
-cap_preferiti = ["2", "3"]
+cap_preferiti = ["2", "3", "4"]
 lista_possibilita = []
 
 
@@ -66,6 +60,7 @@ else:
 # print(lista_possibilita)
 es = choice(lista_possibilita)
 print(f"Con questo ne fai {1 + len(fatti_oggi)}, la media è {media} al giorno")
+
 feedback = input(f"Ora facciamo il {es} del capitolo {capitolo}\n")
 if feedback == "no":
     print("niente")
