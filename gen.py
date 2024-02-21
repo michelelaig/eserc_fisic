@@ -37,7 +37,7 @@ with open("done.csv", "r") as f:
     if t + '\n' in lst:
         fatti_oggi = [s.strip() for s in lst[lst.index(t + '\n') + 1::]]
 
-cap_preferiti = ["4", "6", "7", "7"]
+cap_preferiti = ["4", "6"]
 lista_possibilita = []
 
 
@@ -106,4 +106,3 @@ if n >= diz[capitolo][f"n_{tipo}"] and n < diz[capitolo][f"n_{tipo}_max"]:
 
 with open("es.json", "w") as f:
     json.dump(diz, f)
-
