@@ -55,6 +55,13 @@ def occorrenze(s):
 
 while not lista_possibilita:
     cs = list(diz.keys()) + cap_preferiti * 10
+    for t_cap in diz.keys():
+        e_t_cap = diz[t_cap]
+        esr_rim = e_t_cap["n_esr_max"] - e_t_cap["n_esr"]
+        esm_rim = e_t_cap["n_esm_max"] - e_t_cap["n_esm"]
+        # print(f"{t_cap}: esr {esr_rim}, esm: {esm_rim}")
+        cs.extend(t_cap * (esr_rim + esm_rim))
+    # print(cs)
     capitolo = choice(list(cs))
     lista_possibilita = [
         f"{tipo} {i}" for i in range(1, 1 + int(diz[capitolo][f"n_{tipo}"]))
