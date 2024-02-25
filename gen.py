@@ -24,7 +24,8 @@ t = str(datetime.date(datetime.now()))
 with open("done.csv", "r") as f:
     lst = f.readlines()
     date = [s.strip() for s in lst if "2024" in s]
-
+    ieri = date[-1]
+    print(ieri)
     dubbi = [s.strip(" dubbio\n") for s in lst
              if "dubbio" in s and not s.strip(" dubbio\n") + "\n" in lst]
     fatti = [s.strip(" dubbio\n").strip() for s in lst if "2024" not in s]
@@ -99,7 +100,6 @@ feedback = input(f"Ora facciamo il {c} {es} del capitolo {capitolo} {e}\n")
 if feedback == "no":
     print("niente")
     exit()
-
 
 with open("done.csv", "a") as f:
     if t not in date:
