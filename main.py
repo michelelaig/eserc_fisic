@@ -103,7 +103,7 @@ def choose_ex(cap):
 
 def resolve(es, c, info):
     cap, tipo, numero = es.split(" ")[0], es.split(" ")[1], es.split(" ")[2]
-    feedback = input(f"Ora l'es {c}{es} {info}{ENDC}\n")
+    feedback = input(f"Ora dal cap {c}{es} {info}{ENDC}\n")
     if feedback == "no":
         print("niente")
         exit()
@@ -157,8 +157,9 @@ if __name__ == "__main__":
     today_date = datetime.now().strftime("%Y-%m-%d")
     yesterday_date = datetime.now() - timedelta(days=1)
     yesterday_date = yesterday_date.strftime("%Y-%m-%d")
-    json_path = "_es.json"
-    done_path = "_done.csv"
+    json_path = "es.json"
+
+    done_path = "done.csv"
 
     with open(json_path, "r") as f:
         diz = json.load(f)
